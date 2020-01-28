@@ -13,9 +13,6 @@ geocode.fromAddress("Seattle, WA").then(
     }
 )
 
-const key = process.env.REACT_APP_DARK_SKY_API_KEY
-
-
 const LocationSearch = () => {
     const [location, setLocation] = useState({lat: null, lon: null})
 
