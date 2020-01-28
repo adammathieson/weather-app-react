@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import WeatherInfo from './WeatherInfo';
-import geocode from 'react-geocode'
+import geocode from 'react-geocode';
+import Autocomplete from 'react-google-autocomplete';
 
 geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY)
 geocode.setRegion("us")
@@ -25,6 +26,14 @@ const LocationSearch = () => {
                 type="text"
                 id="search-location"
                 placeholder="search for location"
+            />
+            <Autocomplete
+                style={{width: '90%'}}
+                onPlaceSelected={(place) => {
+                console.log(place);
+                }}
+                // types={['(regions)']}
+                componentRestrictions={{country: "us"}}
             />
             <WeatherInfo location={location}/>
         </div>
