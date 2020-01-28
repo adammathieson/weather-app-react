@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import WeatherInfo from './WeatherInfo';
 
+const key = process.env.REACT_APP_DARK_SKY_API_KEY
+
 const LocationSearch = () => {
     const [location, setLocation] = useState({})
 
