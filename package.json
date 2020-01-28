@@ -1,0 +1,8 @@
+{
+  "name": "weather-app-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/adammathieson/weather-app-react.git",
+  "author": "Adam Mathieson <mathieson1222@gmail.com>",
+  "license": "MIT"
+}
