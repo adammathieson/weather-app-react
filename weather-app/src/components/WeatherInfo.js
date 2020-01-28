@@ -4,7 +4,7 @@ const key = process.env.REACT_APP_DARK_SKY_API_KEY
 
 const WeatherInfo = ({ location }) => {
     const [ city, setCity ] = useState({lat: null, lon: null})
-    console.log("city", city)
+    const [ result, setResult ] = useState({})
 
     useEffect(() => {
         setCity({lat: location.lat, lon: location.lon})
@@ -15,7 +15,8 @@ const WeatherInfo = ({ location }) => {
             fetch(`/forecast/${key}/${city.lat},${city.lon}`)
             .then(res => res.json())
             .then(res => {
-                console.log(res)
+                // console.log(res)
+                setResult(res)
             }).catch(error => console.log(error))
         }
         
@@ -23,12 +24,12 @@ const WeatherInfo = ({ location }) => {
 
     return (
         <div>
-        {location.currently ? (
+        {result.currently ? (
             <>
-                <p>Location:</p>
-                <p>Temp:</p>
-                <p>humidity:</p>
-                <p>Warnings:</p>
+                <p>Location: {result.currently.summary}</p>
+                <p>Temp: {result.currently.temperature}°</p>
+                <p>humidity: {result.currently.humidity}</p>
+                <p>Wind Speed: {result.currently.windSpeed}mph</p>
             </>
             ) : <p>No data to display</p>
         } 
