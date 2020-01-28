@@ -9,7 +9,7 @@ geocode.setRegion("us")
 geocode.fromAddress("Seattle, WA").then(
     res => {
         const { lat, lng } = res.results[0].geometry.location
-        console.log(lat, lng)
+        // console.log(lat, lng)
     }
 )
 
@@ -17,20 +17,23 @@ const key = process.env.REACT_APP_DARK_SKY_API_KEY
 
 
 const LocationSearch = () => {
-    const [location, setLocation] = useState({})
+    const [location, setLocation] = useState({lat: null, lon: null})
+
+    const handleSearch = place => {
+        const lat = place.geometry.location.lat()
+        const lon = place.geometry.location.lng()
+        console.log(lat, lon)
+        setLocation({lat, lon})
+    }
 
     return (
         <div className="search-container">
             <h2>Enter Location</h2>
-            <input 
-                type="text"
-                id="search-location"
-                placeholder="search for location"
-            />
             <Autocomplete
                 style={{width: '90%'}}
                 onPlaceSelected={(place) => {
                 console.log(place);
+                handleSearch(place)
                 }}
                 // types={['(regions)']}
                 componentRestrictions={{country: "us"}}
