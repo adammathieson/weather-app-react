@@ -6,7 +6,7 @@
   "author": "Adam Mathieson <mathieson1222@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node weather-app/index.js"
+    "start": "node index.js"
   }
   
 }
